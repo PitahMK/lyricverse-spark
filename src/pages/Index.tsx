@@ -1,7 +1,11 @@
 import Header from "@/components/Header";
 import SearchHero from "@/components/SearchHero";
+import HeroSection from "@/components/HeroSection";
+import GenresSection from "@/components/GenresSection";
 import TrendingLyrics from "@/components/TrendingLyrics";
 import LatestAdditions from "@/components/LatestAdditions";
+import FeaturedPlaylists from "@/components/FeaturedPlaylists";
+import NewsSection from "@/components/NewsSection";
 import FeaturedArtists from "@/components/FeaturedArtists";
 import Footer from "@/components/Footer";
 
@@ -11,11 +15,15 @@ const Index = () => {
       <Header />
       <main>
         <SearchHero />
-        <div className="container mx-auto px-4 pb-16">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+        <HeroSection />
+        <div className="container mx-auto px-4 pb-16 space-y-8">
+          <GenresSection />
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <TrendingLyrics />
             <LatestAdditions />
           </div>
+          <FeaturedPlaylists />
+          <NewsSection />
           <FeaturedArtists />
         </div>
       </main>
