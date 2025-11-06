@@ -1,6 +1,9 @@
 import { NavLink } from "./NavLink";
+import { useAuth } from "@/contexts/AuthContext";
 
-const Header = () => {
+const ViewerHeader = () => {
+  const { isAdmin } = useAuth();
+
   return (
     <header className="border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-50">
       <div className="container mx-auto px-4 py-4">
@@ -30,27 +33,21 @@ const Header = () => {
             >
               Albums
             </NavLink>
-            <NavLink
-              to="/posts"
-              className="text-muted-foreground hover:text-foreground transition-colors font-medium"
-              activeClassName="text-accent"
-            >
-              Posts
-            </NavLink>
-            <NavLink
-              to="/playlists"
-              className="text-muted-foreground hover:text-foreground transition-colors font-medium"
-              activeClassName="text-accent"
-            >
-              Playlists
-            </NavLink>
-            <NavLink
-              to="/genres"
-              className="text-muted-foreground hover:text-foreground transition-colors font-medium"
-              activeClassName="text-accent"
-            >
-              Genres
-            </NavLink>
+            {isAdmin ? (
+              <NavLink
+                to="/cms"
+                className="text-muted-foreground hover:text-foreground transition-colors font-medium"
+              >
+                Admin
+              </NavLink>
+            ) : (
+              <NavLink
+                to="/login"
+                className="text-muted-foreground hover:text-foreground transition-colors font-medium"
+              >
+                Login
+              </NavLink>
+            )}
           </nav>
         </div>
       </div>
@@ -58,4 +55,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default ViewerHeader;
